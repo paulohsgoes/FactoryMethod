@@ -1,0 +1,1 @@
+This repository is to host the Factory Method design pattern implemented with Python. The project here is the same explained on the Head First Design Patterns book, using the solution pyblised at https://realpython.com/factory-method-python/#introducing-factory-method
