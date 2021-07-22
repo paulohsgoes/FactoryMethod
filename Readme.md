@@ -1,2 +1,0 @@
-Este projeto visa ao estudo da implementação do Factory Method Desing Pattern para Python. A implemntação aqui tratada será para a adaptação do exemplo presente no livro Head First Design Patterns.
-Isto é uma alteração
