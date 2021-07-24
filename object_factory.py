@@ -9,5 +9,4 @@ class ObjectFactory:
 		builder = self._builders.get(key)
 		if not builder:
 			raise ValueError(key)
-		print(f"Let's use __call()__ function using **kwargs = {kwargs}")
 		return builder(**kwargs)

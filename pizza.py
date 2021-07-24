@@ -1,34 +1,47 @@
 import object_factory
 
 class CheesePizza:
-	def __init__(self, i):
-		self.thin_crust_dough = i.get('THINCRUSTDOUGH', ingredients)
-		self.marinara_sauce = i.get('MARINARASAUCE', ingredients)
-		self.reggiano_cheese = i.get('REGGIANOCHEESE', ingredients)
-		self.garlic = i.get('GARLIC', ingredients)
-		self.onion = i.get('ONION', ingredients)
-		self.mushroom = i.get('MUSHROOM'. ingredients)
-		self.redpepper = i.get('REDPEPPER', ingredients)
-		self.sliced_pepperoni = i.get('SLICEDPEPPERONI', ingredients)
-		self.fresh_clam = i.get('FRESHCLAM', ingredients)
+	def __init__(self, **i_list):
+		self._ingredients_list = i_list
+		for key in self._ingredients_list:
+			print(key, '->', self._ingredients_list[key].to_str())
+		# self.thin_crust_dough = ingredients.create('THINCRUSTDOUGH')
+		# self.reggiano_cheese = ingredients.create('REGGIANOCHEESE')
+		# self.garlic = ingredients.create('GARLIC')
+		# self.onion = ingredients.create('ONION')
+		# self.marinara_sauce = ingredients.create('MARINARASAUCE')
+		# self.mushroom = ingredients.create('MUSHROOM')
+		# self.redpepper = ingredients.create('REDPEPPER')
+		# self.sliced_pepperoni = ingredients.create('SLICEDPEPPERONI')
+		# self.fresh_clam = ingredients.create('FRESHCLAM')
+
 		
 	def say_hello(self):
 		print(f'Hello, my name is {self.marinara_sauce}')
 
 
 class CheesePizzaBuilder:
-	def __init__(self):
+	def __init__(self, **ingredients_list):
 		self._instance = None
+		self._list = ingredients_list
 
-	def __call__(self, ingredients):
+	def __call__(self):
 		if not self._instance:
-			self._instance = CheesePizza(ingredients)
+			self._instance = CheesePizza(**self._list)
 		return self._instance
 
 
 class ClamPizza:
-	def __init__(self, name):
-		self.name = name
+	def __init__(self):
+		self.thick_crust_dough = ingredients.create('THICKCRUSTDOUGH')
+		self.plum_tomato_sauce = ingredients.create('PLUMTOMATOSAUCE')
+		self.mozzarella_cheese = ingredients.create('MOZZARELLACHEESE')
+		self.blach_olives = ingredients.create('BLACKOLIVES')
+		self.spinach = ingredients.create('SPINACH')
+		self.eggplant = ingredients.create('EGGPLANT')
+		self.sliced_pepperoni = ingredients.create('SLICEDPEPPERONI')
+		self.frozen_clam = ingredients.create('FROZENCLAM')
+
 		
 	def say_hello(self):
 		print(f'Hello, and my name is {self.name}')
@@ -38,9 +51,9 @@ class ClamPizzaBuilder:
 	def __init__(self):
 		self._instance = None
 		
-	def __call__(self, name):
+	def __call__(self):
 		if not self._instance:
-			self._instance = ClamPizza(name)
+			self._instance = ClamPizza()
 		return self._instance
 
 
@@ -49,103 +62,309 @@ class NYPizzaProviders(object_factory.ObjectFactory):
 		pass
 
 
-class ThinCrustDough():
-	def to_str(self):
-		print(f"Hi I'm ThinCrustDough ingredient")
-	
+class ThinCrustDough:
+	def __init__(self):
+		print(f'THIN CRUST DOUGH ingredient successfuly created')
+		
+	def __str(self):
+		return f"Hi I'm Thin Crust Dough ingredient"
 
-class ThickCrustDough():
-	def to_str(self):
-		print(f"Hi I'm ThickCrustDough ingredient")
+
+class ThinCrustDoughBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = ThinCrustDough()
+		return self._instance
+
+
+class ThickCrustDough:
+	def __init__(self):
+		print(f'THICK CRUST DOUGH ingredient successfuly created')
+		
+	def __str__ (self):
+		return f"Hi I'm Thick Crust Dough ingredient"
+
+
+class ThickCrustDoughBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = ThickCrustDough()
+		return self._instance
 
 		
-class PlumTomatoSauce():
+class PlumTomatoSauce:
+	def __init__(self):
+		print(f'PLUM TOMATO SAUCE ingredient successfuly created')
+
 	def to_str(self):
-		print(f"Hi I'm PlumTomatoSauce ingredient")
+		print(f"Hi I'm Plum Tomato Sauce ingredient")
 
 
-class MarinaraSauce():
+class PlumTomatoSauceBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = PlumTomatoSauce()
+		return self._instance
+
+
+class MarinaraSauce:
+	def __init__(self):
+		print(f'MARINARA SAUCE ingredient successfuly created')
+
 	def to_str(self):
-		print(f"Hi I'm MarinaraSauce ingredient")
+		print(f"Hi I'm Marinara Sauce ingredient")
 
 
-class ParmesanCheese():
+class MarinaraSauceBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = MarinaraSauce()
+		return self._instance
+
+
+class ParmesanCheese:
+	def __init__(self):
+		print(f'PARMESAN CHEESE ingredient successfuly created')
+
 	def to_str(self):
-		print(f"Hi I'm ParmesanCheese ingredient")
+		print(f"Hi I'm Parmesan Cheese ingredient")
 
 
-class REGGIANOCheese():
+class ParmesanCheeseBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = ParmesanCheese()
+		return self._instance
+
+
+class ReggianoCheese:
+	def __init__(self):
+		print(f'REGGIANO CHEESE ingredient successfuly created')
+
 	def to_str(self):
-		print(f"Hi I'm REGGIANOCheese ingredient")
+		print(f"Hi I'm Reggiano Cheese ingredient")
 
 
-class MozzarellaCheese():
+class ReggianoCheeseBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = ReggianoCheese()
+		return self._instance
+		
+
+class MozzarellaCheese:
+	def __init__(self):
+		print(f'MOZZARELLA CHEESE ingredient successfuly created')
+
 	def to_str(self):
 		print(f"Hi I'm MozzarellaCheese ingredient")
 
 
-class BlackOlives():
+class MozzarellaCheeseBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = MozzarellaCheese()
+		return self._instance
+
+
+class BlackOlives:
+	def __init__(self):
+		print(f'BLACK OLIVES ingredient successfuly created')
+
 	def to_str(self):
 		print(f"Hi I'm BlackOlives ingredient")
 
 
-class Eggplant():
+class BlackOlivesBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = BlackOlives()
+		return self._instance
+
+
+class Eggplant:
+	def __init__(self):
+		print(f'EGGPLANT ingredient successfuly created')
+
 	def to_str(self):
 		print(f"Hi I'm Eggplant ingredient")
 
 
-class Onion():
+class EggplantBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = Eggplant()
+		return self._instance
+
+
+class Onion:
+	def __init__(self):
+		print(f'ONION ingredient successfuly created')
+
 	def to_str(self):
 		print(f"Hi I'm Onion ingredient")
 
 
-class Garlic():
+class OnionBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = Onion()
+		return self._instance
+
+
+class Garlic:
+	def __init__(self):
+		print(f'GARLIC ingredient successfuly created')
+
 	def to_str(self):
 		print(f"Hi I'm Garlic ingredient")
 
 
-class RedPepper():
+class GarlicBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = Garlic()
+		return self._instance
+
+
+class RedPepper:
+	def __init__(self):
+		print(f'RED PEPPER ingredient successfuly created')
+		
 	def to_str(self):
 		print(f"Hi I'm Red Pepper ingredient")
 	
 
-class Mushroom():
+class RedPepperBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = RedPepper()
+		return self._instance
+
+
+class Mushroom:
+	def __init__(self):
+		print(f'MUSHROOM ingredient successfuly created')
+
 	def to_str(self):
 		print(f"Hi I'm Mushroom ingredient")
 
 
-class Spinach():
+class MushroomBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = Mushroom()
+		return self._instance
+
+
+class Spinach:
+	def __init__(self):
+		print(f'SPINACH ingredient successfuly created')
+
 	def to_str(self):
 		print(f"Hi I'm Spinach ingredient")
 
 
-class SlicedPepperoni():
+class SpinachBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = Spinach()
+		return self._instance
+
+
+class SlicedPepperoni:
+	def __init__(self):
+		print(f'SLICED PEPPERONI ingredient successfuly created')
+		
 	def to_str(self):
 		print(f"Hi I'm Sliced Pepperoni ingredient")
 
 
-class FreshClam():
+class SlicedPepperoniBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = SlicedPepperoni()
+		return self._instance
+
+
+class FreshClam:
+	def __init__(self):
+		print(f'FRESH CLAM ingredient successfuly created')
+		
 	def to_str(self):
 		print(f"Hi I'm Fresh Clam ingredient")
 
 
-class FrozenClam():
+class FreshClamBuilder:
+	def __init__(self):
+		self._instance = None
+
+	def __call__(self):
+		if not self._instance:
+			self._instance = FreshClam()
+		return self._instance
+
+
+class FrozenClam:
+	def __init__(self):
+		print(f'FROZEN CLAM ingredient successfuly created')
+
 	def to_str(self):
 		print(f"Hi I'm Frozen Clam ingredient")
 
 
-class PizzaIngredients:
-	def __init__(self, ingredients):
-		self.ingredients = ingredients
-
-
-class PizzaIngredientsBuilder:
+class FrozenClamBuilder:
 	def __init__(self):
 		self._instance = None
 
-	def __call__(self, ingredients):
+	def __call__(self):
 		if not self._instance:
-			self._instance = PizzaIngredients(ingredients)
+			self._instance = FrozenClam()
 		return self._instance
 
 
@@ -154,28 +373,44 @@ class PizzaIngredientsProviders(object_factory.ObjectFactory):
 		return self.create(ingredient_id, **kwargs)
 
 		
-NYpizzas = NYPizzaProviders()
-NYpizzas.register_builder('CHEESE', CheesePizzaBuilder())
-NYpizzas.register_builder('CLAM', ClamPizzaBuilder())
+# NYpizzas = NYPizzaProviders()
+# NYpizzas.register_builder('CHEESE', CheesePizzaBuilder(**NY_cheese_pizza_ingredients))
+# NYpizzas.register_builder('CLAM', ClamPizzaBuilder())
 
 """
 Ingredients Factory
 """
 ingredients = PizzaIngredientsProviders()
-ingredients.register_builder('PLUMTOMATOSAUCE', PlumTomatoSauce())
-ingredients.register_builder('MARINARASAUCE', MarinaraSauce())
-ingredients.register_builder('THINCRUSTDOUGH', ThinCrustDough())
-ingredients.register_builder('THICKCRUSTDOUGH', ThickCrustDough())
-ingredients.register_builder('PARMESANCHEESE', ParmesanCheese())
-ingredients.register_builder('REGGIANOCHEESE', REGGIANOCheese())
-ingredients.register_builder('MOZZARELLACHEESE', MozzarellaCheese())
-ingredients.register_builder('GARLIC', Garlic())
-ingredients.register_builder('ONION', Onion())
-ingredients.register_builder('MUSHROOM', Mushroom())
-ingredients.register_builder('REDPEPPER', RedPepper())
-ingredients.register_builder('BLACKOLIVES', BlackOlives())
-ingredients.register_builder('EGGPLANT', Eggplant())
-ingredients.register_builder('SPINACH', Spinach())
-ingredients.register_builder('SLICEDPEPPERONI', SlicedPepperoni())
-ingredients.register_builder('FRESHCLAM', FreshClam())
-ingredients.register_builder('FROZENCLAM', FrozenClam())
+ingredients.register_builder('PLUMTOMATOSAUCE', PlumTomatoSauceBuilder())
+ingredients.register_builder('MARINARASAUCE', MarinaraSauceBuilder())
+ingredients.register_builder('THINCRUSTDOUGH', ThinCrustDoughBuilder())
+ingredients.register_builder('THICKCRUSTDOUGH', ThickCrustDoughBuilder())
+ingredients.register_builder('PARMESANCHEESE', ParmesanCheeseBuilder())
+ingredients.register_builder('REGGIANOCHEESE', ReggianoCheeseBuilder())
+ingredients.register_builder('MOZZARELLACHEESE', MozzarellaCheeseBuilder())
+ingredients.register_builder('GARLIC', GarlicBuilder())
+ingredients.register_builder('ONION', OnionBuilder())
+ingredients.register_builder('MUSHROOM', MushroomBuilder())
+ingredients.register_builder('REDPEPPER', RedPepperBuilder())
+ingredients.register_builder('BLACKOLIVES', BlackOlivesBuilder())
+ingredients.register_builder('EGGPLANT', EggplantBuilder())
+ingredients.register_builder('SPINACH', SpinachBuilder())
+ingredients.register_builder('SLICEDPEPPERONI', SlicedPepperoniBuilder())
+ingredients.register_builder('FRESHCLAM', FreshClamBuilder())
+ingredients.register_builder('FROZENCLAM', FrozenClamBuilder())
+
+NY_cheese_pizza_ingredients = {
+	'thin_crust_dough': ingredients.get('THINCRUSTDOUGH'),
+	'reggiano_cheese': ingredients.get('REGGIANOCHEESE'),
+	'garlic': ingredients.get('GARLIC'),
+	'onion': ingredients.get('ONION'),
+	'marinara_sauce': ingredients.get('MARINARASAUCE'),
+	'mushroom': ingredients.get('MUSHROOM'),
+	'red_pepper': ingredients.get('REDPEPPER'),
+	'sliced_pepperoni': ingredients.get('SLICEDPEPPERONI'),
+	'fresh_clam': ingredients.get('FRESHCLAM')
+}
+
+NYpizzas = NYPizzaProviders()
+NYpizzas.register_builder('CHEESE', CheesePizzaBuilder(**NY_cheese_pizza_ingredients))
+NYpizzas.register_builder('CLAM', ClamPizzaBuilder())
