@@ -10,3 +10,7 @@ class ObjectFactory:
 		if not builder:
 			raise ValueError(key)
 		return builder(**kwargs)
+		
+	def list_items(self):
+		for key in self._builders:
+			print(self._builders[key]._instance)
